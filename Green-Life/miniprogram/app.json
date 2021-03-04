@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/test/test",
+    "pages/user/user",
+    "pages/show/show",
+    "pages/enterTest/enterTest",
+    "pages/testResult/testResult",
+    "pages/scanPicture/scanPicture",
+    "pages/mall/mall",
+    "pages/score/score",
+    "pages/order/order",
+    "pages/goodsDetail/goodsDetail",
+    "pages/createOrder/createOrder",
+    "pages/address/address",
+    "pages/addressEdit/addressEdit"
+  ],
+  "window": {
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#00af91",
+    "navigationBarTitleText": "绿色生活",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#00af91",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "垃圾分类",
+        "iconPath": "images/rub.png",
+        "selectedIconPath": "images/rub_sel.png"
+      },
+      {
+        "pagePath": "pages/mall/mall",
+        "text": "积分商城",
+        "iconPath": "images/deal.png",
+        "selectedIconPath": "images/deal_sel.png"
+      },
+      {
+        "pagePath": "pages/test/test",
+        "text": "小测试",
+        "iconPath": "images/test.png",
+        "selectedIconPath": "images/test_sel.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user_sel.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-area": "@vant/weapp/area/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-switch": "@vant/weapp/switch/index",
+    "van-card": "@vant/weapp/card/index"
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,6 @@
+/* pages/show/show.wxss */
+.bottom-button .van-button {
+  margin-top: 50rpx;
+  width: 180rpx;
+  font-size: 30rpx;
+}

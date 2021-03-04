@@ -1,0 +1,11 @@
+<!-- pages/show/show.wxml -->
+<view class="show-wrapper" wx:for="{{results}}" wx:key="index">
+  <van-cell-group>
+    <van-cell title="{{item.name}}" value="{{item.type}}" label="{{item.explain}}" border="{{ false }}" />
+  </van-cell-group>
+  <van-toast id="van-toast" />
+</view>
+<van-empty image="search" description="没有找到哦，换个词试试吧" wx:if="{{empty}}">
+  <van-button type="primary" class="bottom-button" color="#00af91" bind:click="goBack">返回</van-button>
+</van-empty>
+<van-toast id="van-toast" />

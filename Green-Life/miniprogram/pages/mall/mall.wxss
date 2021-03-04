@@ -1,0 +1,42 @@
+/* pages/mall/mall.wxss */
+.mall-head {
+  width: 100%;
+  height: 360rpx;
+}
+
+.head-banner {
+  width: 100%;
+  height: 100%;
+}
+
+.score-available {
+  display: flex;
+  margin: 26rpx;
+}
+
+.available-left {
+  flex: 1;
+}
+
+.available-right {
+  flex: 1;
+  text-align: right;
+}
+
+.mall-goods{
+  background-color: #fff;
+  padding-top: 60rpx;
+}
+.goods-title{      
+  padding-left: 40rpx;
+  font-size: 32rpx;
+  font-weight: 600; 
+}
+.goods-each{
+  height: 460rpx;
+  white-space: nowrap;
+  margin-left: 20rpx;
+}
+.goods-content{
+  margin-top: 50rpx;
+}

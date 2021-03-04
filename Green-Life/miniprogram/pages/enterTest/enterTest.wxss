@@ -1,0 +1,39 @@
+/* pages/enterTest/enterTest.wxss */
+.question-number{
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  font-size: 26rpx;
+  color: #00af91;
+}
+.question-title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100rpx;
+  color: #00af91;
+  font-weight: bold;
+  font-size: 45rpx;
+}
+.question-subtitle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+  color: #00af91;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+.answer_wrapper{
+  margin-top: 200rpx;
+}
+.choice{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.van-button{
+  width: 300rpx;
+  margin: 0 auto;
+  margin-bottom: 50rpx;
+}

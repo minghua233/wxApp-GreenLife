@@ -1,0 +1,14 @@
+/* pages/score/score.wxss */
+.score-available {
+  display: flex;
+  margin: 26rpx;
+}
+
+.available-left {
+  flex: 1;
+}
+
+.available-right {
+  flex: 1;
+  text-align: right;
+}

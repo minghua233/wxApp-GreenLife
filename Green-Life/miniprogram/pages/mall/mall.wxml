@@ -1,0 +1,22 @@
+<view class="mall-wrapper">
+  <view class="mall-head">
+    <image class="head-banner" src="https://636d-cmh-5gebbyey0b914c53-1303973985.tcb.qcloud.la/Green-Life/jf_mall.jpg?sign=d2338f762cc209309f8ae5c81e8e963a&t=1610956257"></image>
+  </view>
+  <view class="score">
+    <view class="score-available">
+      <text class="available-left">当前可兑换积分</text>
+      <text class="available-right">{{score}}</text>
+    </view>
+  </view>
+  <view class="mall-goods">
+    <view class="goods-title">纸品湿巾</view>
+    <view class="goods-content">
+      <scroll-view scroll-x="{{true}}" class="goods-each">
+        <goodItem class="item" wx:for="{{allGoods}}" wx:key="_id" good="{{item}}"></goodItem>
+      </scroll-view>
+    </view>
+    <!-- <goodItem></goodItem> -->
+  </view>
+</view>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

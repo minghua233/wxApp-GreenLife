@@ -1,0 +1,23 @@
+<!-- pages/user/user.wxml -->
+<view class="user_wrapper">
+  <view class="user_header">
+    <view class="header-img">
+      <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{!hasUserInfo}}">
+        点此登录
+      </button>
+      <block wx:else>
+        <image class="img" src="{{avatarUrl}}" />
+      </block>
+    </view>
+    <text class="header-name">{{userInfo.nickName}}</text>
+  </view>
+  <view class="user_menu">
+    <van-grid clickable="{{true}}">
+      <van-grid-item icon="records" bind:click="goDetail" text="积分明细" />
+      <van-grid-item icon="location-o" bind:click="goAddress" text="地址管理" />
+      <van-grid-item icon="gift-o" bind:click="goOrder" text="我的兑换" />
+      <van-grid-item icon="info-o" bind:click="aboutUs" text="关于我们" />
+    </van-grid>
+  </view>
+</view>
+<van-dialog id="van-dialog" />

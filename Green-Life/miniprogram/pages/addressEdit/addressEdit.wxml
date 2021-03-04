@@ -1,0 +1,26 @@
+<view class="address-wrapper">
+  <view class="address-text">
+    <text class="title"></text>
+  </view>
+  <view class="address-detail">
+    <van-cell-group>
+      <van-field model:value="{{ recipient }}" label="收件人:" required placeholder="请输入收件人姓名" />
+      <van-field model:value="{{ phone }}" label="手机号:" required placeholder="请输入收件人手机号" error-message="{{phoneError}}" border="{{ false }}" />
+      <van-field model:value="{{ address }}" label="收件地址:" required placeholder="请输入收件人地址，xx省xx市xx区/县" />
+      <van-field model:value="{{ addressDetail }}" label="详细地址:" required placeholder="请输入收件人详细地址" />
+      <!-- <van-switch model:checked="{{ isDefault }}" bind:change="onChange" /> -->
+    </van-cell-group>
+  </view>
+  <view class="address-button">
+    <block wx:if="{{status=='add'}}">
+      <van-button round bind:click="addAddress" color="#00af91">新增地址</van-button>
+    </block>
+    <block wx:else>
+      <van-button round bind:click="editAddress" color="#00af91">修改地址</van-button>
+    </block>
+    <block wx:if="{{status!='add'}}">
+      <van-button round bind:click="delAddress" color="#e74c3c">删除地址</van-button>
+    </block>
+  </view>
+</view>
+<van-toast id="van-toast" />

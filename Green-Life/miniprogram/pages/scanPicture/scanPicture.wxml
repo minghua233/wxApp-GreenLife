@@ -1,0 +1,14 @@
+<!-- pages/scanPicture/scanPicture.wxml -->
+<view class="scan_wrapper">
+  <view class="scan-img middle">
+    <view class="img-wrapper">
+      <image class="img" src="{{img}}" mode="aspectFit" />
+    </view>
+  </view>
+  <view class="scan-desc">
+    <van-cell-group>
+      <van-cell title="{{bindSource[0].name}}" value="{{bindSource[0].lajitype}}" label="{{bindSource[0].lajitip}}" border="{{ false }}" />
+    </van-cell-group>
+  </view>
+</view>
+<van-toast id="van-toast" />

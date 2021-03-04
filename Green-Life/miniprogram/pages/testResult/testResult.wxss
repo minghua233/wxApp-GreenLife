@@ -1,0 +1,44 @@
+/* pages/testResult/testResult.wxss */
+.result-bg {
+  background: linear-gradient(#00af91, #93F9B9);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+}
+
+.result-wrapper {
+  background: #fff;
+  width: 480rpx;
+  height: 640rpx;
+  margin-top: 60rpx;
+  border-radius: 20rpx;
+  color: #00af91;
+}
+
+.result-correct{
+  margin-top: 30%;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.result-score{
+  margin-top: 60rpx;
+  font-size: 36rpx;
+}
+
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.back-button{
+  margin-top: 80rpx;
+}
+
+.van-button {
+  width: 300rpx;
+  font-size: 30rpx;
+}

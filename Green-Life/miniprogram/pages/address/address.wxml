@@ -1,0 +1,17 @@
+<!-- pages/address/address.wxml -->
+<view class="address-wrapper">
+  <block wx:if="{{userAddress.length}}">
+    <van-cell-group>
+      <van-cell wx:for="{{userAddress}}" wx:key="index" title="{{item.recipient}}" value="{{item.phone}}" label="{{item.address}}{{item.addressDetail}}" clickable bind:click="goEdit" data-info="{{item}}" />
+    </van-cell-group>
+  </block>
+  <block wx:else>
+    <van-empty description="暂时没有地址哦，点下方按钮新增一个吧"></van-empty>
+  </block>
+  <view class="address-add">
+    <van-button round color="#00af91" class="bottom-button" icon="plus" bind:click="goAdd">
+      新增地址
+    </van-button>
+  </view>
+</view>
+<van-toast id="van-toast" />

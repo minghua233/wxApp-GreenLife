@@ -1,0 +1,14 @@
+/* pages/addressEdit/addressEdit.wxss */
+.address-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 200rpx;
+}
+.van-button{
+  flex: 1;
+  margin: 20rpx;
+  width: 400rpx;
+  font-size: 30rpx;
+}

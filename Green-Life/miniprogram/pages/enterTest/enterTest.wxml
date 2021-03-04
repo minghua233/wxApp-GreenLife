@@ -1,0 +1,23 @@
+<!-- pages/enterTest/enterTest.wxml -->
+<view class="test_wrapper">
+  <view class="question_wrapper">
+  <view class="question-number">{{num}}/5</view>
+    <view class="question-title">{{question.name}}</view>
+    <view class="question-subtitle">属于以下哪种垃圾分类？</view>
+  </view>
+  <view class="answer_wrapper">
+    <view class="choice">
+      <van-button color="#3498db" bind:click="choose" data-type="0">可回收垃圾</van-button>
+    </view>
+    <view class="choice">
+      <van-button color="#e74c3c" bind:click="choose" data-type="1">有害垃圾</van-button>
+    </view>
+    <view class="choice">
+      <van-button color="#27ae60" bind:click="choose" data-type="2">厨余(湿)垃圾</van-button>
+    </view>
+    <view class="choice">
+      <van-button color="#2c3e50" bind:click="choose" data-type="3">其他(干)垃圾</van-button>
+    </view>
+  </view>
+</view>
+<van-toast id="van-toast" />

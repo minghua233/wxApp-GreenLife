@@ -1,0 +1,15 @@
+/* pages/address/address.wxss */
+.address-add {
+  position: fixed;
+  bottom: 20rpx;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.van-button {
+  width: 300rpx;
+  font-size: 30rpx;
+}

@@ -1,0 +1,16 @@
+<view class="order-wrapper">
+  <view class="order-address">
+    <van-cell-group title="收货地址">
+      <van-cell title="{{addressInfo.recipient}}" value="{{addressInfo.phone}}" label="{{addressInfo.address}}{{addressInfo.addressDetail}}" bind:click="chooseAddress" clickable is-link="{{true}}" />
+    </van-cell-group>
+  </view>
+  <view class="order-good">
+    <van-cell-group title="商品详情">
+      <van-card num="1" price="{{goodsInfo.needScore}}" title="{{goodsInfo.goodName}}" thumb="{{ goodsInfo.goodPicture }}" currency="积分：" />
+    </van-cell-group>
+  </view>
+  <view class="order-button">
+    <van-button round type="default" color="#00af91" bind:click="submit">确认兑换</van-button>
+  </view>
+</view>
+<van-toast id="van-toast" />

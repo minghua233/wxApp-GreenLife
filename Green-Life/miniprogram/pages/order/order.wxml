@@ -1,0 +1,10 @@
+<view class="order-wrapper">
+  <view class="order-detail">
+    <van-cell-group title="兑换记录">
+      <van-cell wx:for="{{userOrder}}" wx:key="index">
+        <van-card num="1" price="{{item.needScore}}" desc="兑换时间：{{item.addTime}}　　　　　收货地址：{{item.address}}" title="{{item.goodName}}" thumb="{{item.goodPicture}}" currency="积分：" />
+      </van-cell>
+    </van-cell-group>
+  </view>
+</view>
+<van-toast id="van-toast" />

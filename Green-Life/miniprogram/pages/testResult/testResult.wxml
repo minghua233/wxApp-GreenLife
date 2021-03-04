@@ -1,0 +1,10 @@
+<!-- pages/testResult/testResult.wxml -->
+<view class="result-bg middle">
+  <view class="result-wrapper middle">
+    <text class="result-correct ">您本次共答对了{{correct}}题</text>
+    <text class="result-score ">获得{{score}}积分</text>
+  </view>
+  <view class="back-button">
+    <van-button color="#00af91" bind:click="goTest">返回答题</van-button>
+  </view>
+</view>

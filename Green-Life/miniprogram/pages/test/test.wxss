@@ -1,0 +1,22 @@
+/* pages/test/test.wxss */
+.test-desc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100rpx;
+  color: #00af91;
+  font-weight: bold;
+  font-size: 40rpx;
+}
+
+.test-type {
+  margin-top: 200rpx;
+}
+
+.type .van-button{
+  width: 300rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30rpx;
+}

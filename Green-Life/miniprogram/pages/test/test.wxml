@@ -1,0 +1,12 @@
+<view class="test_wrapper">
+  <view class="test-desc">测测你的环保小知识，答题有积分哦</view>
+  <view class="test-type">
+    <view class="type">
+      <van-button color="#00af91" bind:click="goTest">垃圾分类问答</van-button>
+    </view>
+    <view class="type">
+      <van-button color="#00af91" disabled="{{true}}">敬请期待</van-button>
+    </view>
+  </view>
+</view>
+<van-dialog id="van-dialog" />

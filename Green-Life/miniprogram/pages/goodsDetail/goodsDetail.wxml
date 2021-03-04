@@ -1,0 +1,15 @@
+<view class="detail-wrapper">
+  <view class="good-headPic">
+    <image class="headPic" src="{{good.goodPicture}}"></image>
+  </view>
+  <view class="good-desc">
+    <text class="desc-name">{{good.goodName}}</text>
+    <text class="desc-stock">库存{{good.goodSum}}件</text>
+    <text class="desc-price">{{good.needScore}}积分</text>
+    <image class="desc-img" src="{{good.goodDesc}}" mode="widthFix"></image>
+  </view>
+  <view class="good-buy">
+    <van-button color="#00af91" class="buy-button" bind:click="buyNow" round>立即兑换</van-button>
+  </view>
+</view>
+<van-toast id="van-toast" />

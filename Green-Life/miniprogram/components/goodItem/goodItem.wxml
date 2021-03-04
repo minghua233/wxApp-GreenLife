@@ -1,0 +1,9 @@
+<!--components/goodItem.wxml-->
+<view class="items">
+  <view class="item" bindtap="chooseItem">
+    <image src="{{good.goodPicture}}" class="item_img" />
+    <text class="item_title">{{good.goodName}}</text>
+    <text class="item_price">积分：{{good.needScore}}</text>
+    <text class="item_stock">库存：{{good.goodSum}}</text>
+  </view>
+</view>

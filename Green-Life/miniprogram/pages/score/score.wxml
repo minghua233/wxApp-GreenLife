@@ -1,0 +1,13 @@
+<!-- pages/score/score.wxml -->
+<view class="score-wrapper">
+  <view class="score-available">
+    <text class="available-left">当前可用积分</text>
+    <text class="available-right">{{score}}</text>
+  </view>
+  <view class="score-detail">
+    <van-cell-group title="积分明细">
+      <van-cell wx:for="{{scoreDetail}}" wx:key="index" title="{{item.from}}" value="{{item.type}}{{item.score}}" label="{{item.addTime}}"/>
+    </van-cell-group>
+  </view>
+</view>
+<van-toast id="van-toast" />

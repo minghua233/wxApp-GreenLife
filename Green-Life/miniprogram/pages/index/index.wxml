@@ -1,0 +1,39 @@
+<!-- miniprogram/pages/index.wxml -->
+<view class="classification">
+  <view class="classification_banner">
+    <image class="banner" src="https://636d-cmh-5gebbyey0b914c53-1303973985.tcb.qcloud.la/Green-Life/rub_banner.jpg?sign=ac13313f1237525c3b38204a90314892&t=1610955427" mode="aspectFit|aspectFill|widthFix" />
+  </view>
+  <view class="classification_search">
+    <van-search value="{{ value }}" input-align="center" placeholder="请输入要查询的垃圾" bind:search="searchRub"/>
+  </view>
+  <view class="classification_intro">
+    <text class="intro_title">垃圾分类指南</text>
+    <view class="intro_desc">
+      <van-grid column-num="2" border="{{false}}" clickable="{{true}}">
+        <van-grid-item use-slot bind:click="showPopup" data-type="0">
+          <image style="width: 100%; height: 70px; " src="https://636d-cmh-5gebbyey0b914c53-1303973985.tcb.qcloud.la/Green-Life/khs2.png?sign=aa7971d637b5a75fb68bfc4618e6adbf&t=1610955517" />
+        </van-grid-item>
+        <van-grid-item use-slot bind:click="showPopup" data-type="1">
+          <image style="width: 100%; height: 70px;" src="https://636d-cmh-5gebbyey0b914c53-1303973985.tcb.qcloud.la/Green-Life/yh2.png?sign=23c728231aaa63bfcd81298a4eabfd91&t=1610955552" />
+        </van-grid-item>
+        <van-grid-item use-slot bind:click="showPopup" data-type="2">
+          <image style="width: 100%; height: 70px;" src="https://636d-cmh-5gebbyey0b914c53-1303973985.tcb.qcloud.la/Green-Life/cy2.png?sign=1afb2eecdb89e77efff4ecf7f1931e14&t=1610955573" />
+        </van-grid-item>
+        <van-grid-item use-slot bind:click="showPopup" data-type="3">
+          <image style="width: 100%; height: 70px;" src="https://636d-cmh-5gebbyey0b914c53-1303973985.tcb.qcloud.la/Green-Life/qt2.png?sign=fff2aaead5ecc5193e5e15a92e7cbb46&t=1610955589" />
+        </van-grid-item>
+      </van-grid>
+    </view>
+  </view>
+  <view class="classification_photo">
+    <van-button icon="photo-o" color="#00af91" bind:click="scanPic">识别图片</van-button>
+  </view>
+  <view class="classification_popup">
+    <van-popup show="{{ show }}" bind:close="onClose" custom-style="height: 85%"  round position="bottom">
+      <view class="desc">
+        <image class="desc_img" src="{{descImg}}" />
+      </view>
+    </van-popup>
+  </view>
+  
+</view>
