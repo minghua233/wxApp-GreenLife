@@ -41,10 +41,8 @@ Page({
       // console.log(res);
       let detail = res.result.data.reverse()
       for (let i = 0; i < detail.length; i++) {
+        // dayjs格式化日期
         detail[i].addTime = dayjs(detail[i].addTime).format('YYYY-MM-DD HH:mm:ss')
-        console.log(detail[i].addTime);
-        // detail[i].addTime = detail[i].addTime.slice(0, 19)
-        // detail[i].addTime = detail[i].addTime.replace('T', ' ')
       }
       this.setData({
         scoreDetail: detail
