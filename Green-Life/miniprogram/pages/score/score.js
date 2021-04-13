@@ -1,5 +1,6 @@
 // pages/score/score.js
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+import dayjs from 'dayjs'
 Page({
 
   /**
@@ -38,10 +39,12 @@ Page({
       data: {}
     }).then(res => {
       // console.log(res);
-      let detail = res.result.data
+      let detail = res.result.data.reverse()
       for (let i = 0; i < detail.length; i++) {
-        detail[i].addTime = detail[i].addTime.slice(0, 19)
-        detail[i].addTime = detail[i].addTime.replace('T', ' ')
+        detail[i].addTime = dayjs(detail[i].addTime).format('YYYY-MM-DD HH:mm:ss')
+        console.log(detail[i].addTime);
+        // detail[i].addTime = detail[i].addTime.slice(0, 19)
+        // detail[i].addTime = detail[i].addTime.replace('T', ' ')
       }
       this.setData({
         scoreDetail: detail
