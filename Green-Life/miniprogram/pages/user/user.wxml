@@ -2,9 +2,14 @@
 <view class="user_wrapper">
   <view class="user_header">
     <view class="header-img">
-      <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{!hasUserInfo}}">
+      <!-- 4.13微信登录接口更改 -->
+      <!-- <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{!hasUserInfo}}">
         点此登录
-      </button>
+      </button> -->
+      <block wx:if="{{!hasUserInfo}}">
+        <button class="btn" wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile">点此登录</button>
+        <button class="btn" wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo">点此登录</button>
+      </block>
       <block wx:else>
         <image class="img" src="{{avatarUrl}}" />
       </block>

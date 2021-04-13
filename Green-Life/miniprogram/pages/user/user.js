@@ -9,43 +9,56 @@ Page({
   data: {
     avatarUrl: '../../images/user.jpg',
     userInfo: {},
-    hasUserInfo: false
+    hasUserInfo: false,
+    canIUseGetUserProfile: false,
+  },
+  getUserProfile(e) {
+    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+    // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+    wx.getUserProfile({
+      desc: '获取用户头像昵称', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        this.getUserSetting(res.userInfo)
+      }
+    })
   },
   getUserInfo(e) {
     // console.log(e);
     const userInfo = e.detail.userInfo
-    if (userInfo) {
-      app.globalData.userInfo = userInfo;
-      this.setData({
-        avatarUrl: userInfo.avatarUrl,
-        userInfo: userInfo,
-        hasUserInfo: true
-      })
-      wx.getSetting({
-        success(settingRes) {
-          // console.log(settingRes);
-          // 应经授权
-          if (settingRes.authSetting['scope.userInfo']) {
-            wx.getUserInfo({ // 获取用户信息
-              success(infoRes) {
-                // console.log(infoRes);
-                app.globalData.userInfo = infoRes.userInfo
-                wx.cloud.callFunction({
-                  name: 'glCreateUser',
-                  data: {
-                    avataUrl: infoRes.userInfo.avataUrl,
-                    nickName: infoRes.userInfo.nickName,
-                    sex: infoRes.userInfo.gender
-                  }
-                })
-              }
-            })
-          }
-        }
-      })
-    }
+    if (userInfo) this.getUserSetting(userInfo)
     console.log(app.globalData.userInfo);
   },
+  getUserSetting(userInfo) {
+    app.globalData.userInfo = userInfo;
+    this.setData({
+      avatarUrl: userInfo.avatarUrl,
+      userInfo: userInfo,
+      hasUserInfo: true
+    })
+    wx.getSetting({
+      success(settingRes) {
+        // console.log(settingRes);
+        // 应经授权
+        if (settingRes.authSetting['scope.userInfo']) {
+          wx.getUserInfo({ // 获取用户信息
+            success(infoRes) {
+              // console.log(infoRes);
+              app.globalData.userInfo = infoRes.userInfo
+              wx.cloud.callFunction({
+                name: 'glCreateUser',
+                data: {
+                  avataUrl: infoRes.userInfo.avataUrl,
+                  nickName: infoRes.userInfo.nickName,
+                  sex: infoRes.userInfo.gender
+                }
+              })
+            }
+          })
+        }
+      }
+    })
+  },
+
   goAddress() {
     if (isLogin()) wx.navigateTo({ url: `../address/address` })
   },
@@ -62,6 +75,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (wx.getUserProfile) {
+      this.setData({
+        canIUseGetUserProfile: true
+      })
+    }
   },
 
   /**
