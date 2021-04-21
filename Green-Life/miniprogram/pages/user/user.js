@@ -1,5 +1,7 @@
 // pages/user/user.js
 import { isLogin } from '../../utils/util'
+import dayjs from 'dayjs'
+import isToday from '../../utils/isToday'
 const app = getApp();
 Page({
 
@@ -11,6 +13,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUseGetUserProfile: false,
+    isSigned: false,
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
@@ -58,7 +61,24 @@ Page({
       }
     })
   },
-
+  signToday() {
+    wx.cloud.callFunction({
+      name: 'glDailyAttendance',
+      data: {}
+    }).then(res => {
+      this.setData({
+        isSigned: true
+      })
+      wx.cloud.callFunction({
+        name: 'glAddScore',
+        data: {
+          score: 200,
+          type: '+',
+          from: '每日签到'
+        }
+      })
+    })
+  },
   goAddress() {
     if (isLogin()) wx.navigateTo({ url: `../address/address` })
   },
@@ -78,6 +98,21 @@ Page({
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
+      })
+    }
+    if (!this.data.isSigned) {
+      wx.cloud.callFunction({
+        name: 'glGetAttendance',
+        data: {}
+      }).then(res => {
+        console.log(res);
+        const signTime = res.result.data.signTime
+        dayjs.extend(isToday)
+        if (dayjs(signTime).isToday()) {
+          this.setData({
+            isSigned: true
+          })
+        }
       })
     }
   },
