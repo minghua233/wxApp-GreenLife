@@ -34,4 +34,13 @@
   text-align: center;
   justify-content: center;
   margin-top: 30rpx;
+  margin-left: 116rpx;
+}
+.sign{
+
+  float: right;
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 66rpx;
+  margin-top: 20rpx;
 }

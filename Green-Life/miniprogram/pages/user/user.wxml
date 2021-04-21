@@ -15,12 +15,9 @@
       <block wx:else>
         <image class="img" src="{{avatarUrl}}" />
       </block>
-      <block wx:if="{{!isSigned}}">
-        <button bind:tap="signToday">签到</button>
-      </block>
-      <block wx:else>
-        <text >已签到</text>
-      </block>
+    </view>
+    <view class="sign" wx:if="{{hasUserInfo}}">
+      <image class="img" src="../../images/sign.png" bind:tap="signToday" />
     </view>
     <text class="header-name">{{userInfo.nickName}}</text>
   </view>
@@ -34,3 +31,4 @@
   </view>
 </view>
 <van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

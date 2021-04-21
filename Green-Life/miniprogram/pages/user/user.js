@@ -2,6 +2,7 @@
 import { isLogin } from '../../utils/util'
 import dayjs from 'dayjs'
 import isToday from '../../utils/isToday'
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 const app = getApp();
 Page({
 
@@ -62,22 +63,39 @@ Page({
     })
   },
   signToday() {
-    wx.cloud.callFunction({
-      name: 'glDailyAttendance',
-      data: {}
-    }).then(res => {
-      this.setData({
-        isSigned: true
+    if (!this.data.isSigned) {
+      Toast.loading({
+        message: '正在签到...',
+        forbidClick: true,
+        duration: 500
       })
       wx.cloud.callFunction({
-        name: 'glAddScore',
-        data: {
-          score: 200,
-          type: '+',
-          from: '每日签到'
-        }
+        name: 'glDailyAttendance',
+        data: {}
+      }).then(res => {
+        this.setData({
+          isSigned: true
+        })
+        wx.cloud.callFunction({
+          name: 'glAddScore',
+          data: {
+            score: 200,
+            type: '+',
+            from: '每日签到'
+          }
+        }).then(res => {
+          Toast.loading({
+            type: 'success',
+            message: '签到成功',
+            forbidClick: true,
+            duration: 500
+          })
+        })
       })
-    })
+    } else {
+      Toast.fail('今日已签到');
+    }
+
   },
   goAddress() {
     if (isLogin()) wx.navigateTo({ url: `../address/address` })
