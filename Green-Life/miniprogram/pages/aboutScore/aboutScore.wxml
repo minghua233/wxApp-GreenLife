@@ -1,0 +1,8 @@
+<!-- pages/aboutScore/aboutScore.wxml -->
+<van-cell-group title="如何获取积分">
+  <van-cell title="每日签到" value="每次签到可获200积分" />
+  <van-cell title="在线答题" value="每答对一题可获10积分" />
+</van-cell-group>
+<van-cell-group title="如何使用积分">
+  <van-cell title="积分商城" value="积分商城使用积分兑换奖品" />
+</van-cell-group>

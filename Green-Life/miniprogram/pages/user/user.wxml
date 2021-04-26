@@ -26,9 +26,14 @@
       <van-grid-item icon="records" bind:click="goDetail" text="积分明细" />
       <van-grid-item icon="location-o" bind:click="goAddress" text="地址管理" />
       <van-grid-item icon="gift-o" bind:click="goOrder" text="我的兑换" />
-      <van-grid-item icon="info-o" bind:click="aboutUs" text="关于我们" />
+      <van-grid-item icon="info-o" bind:click="aboutScore" text="关于积分" />
     </van-grid>
   </view>
 </view>
+<block wx:if="{{hasUserInfo}}">
+  <button class="service_button" open-type='contact' session-from='weapp'>
+    <image class="service_image" src="../../images/service.png"></image>
+  </button>
+</block>
 <van-dialog id="van-dialog" />
 <van-toast id="van-toast" />

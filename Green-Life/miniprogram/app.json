@@ -13,7 +13,8 @@
     "pages/goodsDetail/goodsDetail",
     "pages/createOrder/createOrder",
     "pages/address/address",
-    "pages/addressEdit/addressEdit"
+    "pages/addressEdit/addressEdit",
+    "pages/aboutScore/aboutScore"
   ],
   "window": {
     "backgroundColor": "#ffffff",

@@ -67,7 +67,7 @@ Page({
       Toast.loading({
         message: '正在签到...',
         forbidClick: true,
-        duration: 500
+        duration: 1000
       })
       wx.cloud.callFunction({
         name: 'glDailyAttendance',
@@ -106,8 +106,8 @@ Page({
   goOrder() {
     if (isLogin()) wx.navigateTo({ url: `../order/order` })
   },
-  aboutUs() {
-    wx.navigateTo({ url: `../createOrder/createOrder` })
+  aboutScore() {
+    wx.navigateTo({ url: `../aboutScore/aboutScore` })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -123,8 +123,7 @@ Page({
         name: 'glGetAttendance',
         data: {}
       }).then(res => {
-        console.log(res);
-        const signTime = res.result.data.signTime
+        const signTime = res.result.data[0].signTime || 0
         dayjs.extend(isToday)
         if (dayjs(signTime).isToday()) {
           this.setData({

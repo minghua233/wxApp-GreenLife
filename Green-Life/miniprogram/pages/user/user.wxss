@@ -36,11 +36,23 @@
   margin-top: 30rpx;
   margin-left: 116rpx;
 }
-.sign{
 
+.sign {
   float: right;
   width: 50rpx;
   height: 50rpx;
   margin-right: 66rpx;
   margin-top: 20rpx;
 }
+
+.service_button{
+  left: 32rpx;
+  top: 242rpx;
+  position: fixed;
+ }
+
+ .service_image{
+  z-index: 10;
+  width: 65rpx;
+  height: 65rpx;
+ }
