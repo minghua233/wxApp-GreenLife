@@ -13,45 +13,59 @@ Page({
   // 选择地址
   chooseAddress() {
     const status = 'choose'
-    wx.redirectTo({
+    wx.navigateTo({
       url: `../address/address?status=${status}`
     })
   },
   // 提交订单
   submit() {
-    Toast.loading({
-      message: '创建订单中...',
-      forbidClick: true,
-      duration: 500
-    })
-    wx.cloud.callFunction({
-      name: 'glCreateOrder',
-      data: {
-        addressInfo: this.data.addressInfo,
-        goodInfo: this.data.goodsInfo
-      }
-    }).then(
+    // console.log(this.data.addressInfo);
+    if (Object.keys(this.data.addressInfo).length > 0) {
+      Toast.loading({
+        message: '创建订单中...',
+        forbidClick: true,
+        duration: 1500
+      })
       wx.cloud.callFunction({
-        name: 'glAddScore',
+        name: 'glCreateOrder',
         data: {
-          score: this.data.goodsInfo.needScore,
-          type: '-',
-          from: '积分商城兑换'
+          addressInfo: this.data.addressInfo,
+          goodInfo: this.data.goodsInfo
         }
-      }).then(
-        Toast.success({
-          message: '订单创建成功',
-          forbidClick: true,
-          duration: 500
+      }).then(res => {
+        console.log(res);
+        wx.cloud.callFunction({
+          name: 'glAddScore',
+          data: {
+            score: this.data.goodsInfo.needScore,
+            type: '-',
+            from: '积分商城兑换'
+          }
+        }).then(res => {
+          // console.log(res);
+          // wx.switchTab({ url: `../mall/mall` })
+          Toast({
+            type: 'success',
+            message: '订单创建成功',
+            forbidClick: true,
+            duration: 500,
+            onClose: () => {
+              wx.switchTab({ url: `../mall/mall` })
+            },
+          })
         })
+      }
+
       )
-    )
+    } else {
+      Toast.fail('请选择地址');
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
+    // console.log(options);
     this.setData({ goodsInfo: app.globalData.goodsInfo })
     if (options.goodsInfo) {
       let goodsInfo = JSON.parse(decodeURIComponent(options.goodsInfo))

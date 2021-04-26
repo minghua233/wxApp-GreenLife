@@ -18,5 +18,15 @@ App({
       goodsInfo: {},
       dailyScore: 0
     }
+    // 自定义状态栏高度
+    wx.db = {}
+    let info = wx.getSystemInfoSync()
+    // console.log(info);
+    wx.db.statusBarHeight = info.statusBarHeight
+    if (info.platform === 'android') {
+      wx.db.navBarHeight = 48
+    } else {
+      wx.db.navBarHeight = 44
+    }
   }
 })

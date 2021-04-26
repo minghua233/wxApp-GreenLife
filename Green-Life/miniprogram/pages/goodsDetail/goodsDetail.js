@@ -20,9 +20,11 @@ Page({
         Toast.fail({
           message: '您的积分不足',
           forbidClick: true,
-          duration: 1000
+          duration: 1000,
+          onClose: () => {
+            return false
+          }
         })
-        return
       } else {
         Toast.loading({
           message: '正在加载订单信息...',
@@ -47,10 +49,10 @@ Page({
       forbidClick: true,
       duration: 500
     })
-    console.log(options);
+    // console.log(options);
     const good = JSON.parse(decodeURIComponent(options.good))
     this.setData({ good })
-    console.log(this.data.good);
+    // console.log(this.data.good);
   },
 
   /**

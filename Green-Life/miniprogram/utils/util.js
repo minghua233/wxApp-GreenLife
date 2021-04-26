@@ -31,8 +31,10 @@ const isLogin = () => {
       color: 'blue'
     }).then(() => wx.switchTab({ url: `../user/user` }))
     return false
+  } else {
+    Dialog.close()
+    return true
   }
-  return true
 }
 
 

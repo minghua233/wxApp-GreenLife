@@ -4,7 +4,7 @@
     <image class="banner" src="https://636d-cmh-5gebbyey0b914c53-1303973985.tcb.qcloud.la/Green-Life/rub_banner.jpg?sign=ac13313f1237525c3b38204a90314892&t=1610955427" mode="aspectFit|aspectFill|widthFix" />
   </view>
   <view class="classification_search">
-    <van-search value="{{ value }}" input-align="center" placeholder="请输入要查询的垃圾" bind:search="searchRub"/>
+    <van-search value="{{ value }}" input-align="center" placeholder="请输入要查询的垃圾" bind:search="searchRub" />
   </view>
   <view class="classification_intro">
     <text class="intro_title">垃圾分类指南</text>
@@ -29,11 +29,12 @@
     <van-button icon="photo-o" color="#00af91" bind:click="scanPic">识别图片</van-button>
   </view>
   <view class="classification_popup">
-    <van-popup show="{{ show }}" bind:close="onClose" custom-style="height: 85%"  round position="bottom">
+    <van-popup show="{{ show }}" bind:close="onClose" custom-style="height: 85%" round position="bottom">
       <view class="desc">
         <image class="desc_img" src="{{descImg}}" />
       </view>
     </van-popup>
   </view>
-  
 </view>
+<van-toast id="van-toast" />
+<van-notify id="van-notify" />

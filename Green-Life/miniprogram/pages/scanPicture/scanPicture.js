@@ -23,7 +23,7 @@ Page({
         console.log(imgRes)
         if (imgRes.size > 1024 * 1024 * 2) {
           wx.showModal({
-            title: '垃圾分类',
+            title: '图片过大',
             content: '很抱歉，图片最大允许2M，当前为' + (imgRes.size / (1024 * 1024)).toFixed(2),
           })
           return false;
@@ -60,6 +60,18 @@ Page({
             }
           })
         }
+      },
+      fail: err =>{
+        Toast({
+          type: 'fail',
+          message: '未选择图片!',
+          duration: 500,
+          onClose: () => {
+            wx.switchTab({ url: `../index/index` })
+          },
+        });
+        // Toast.fail('未选择图片');
+       
       }
     }
     )

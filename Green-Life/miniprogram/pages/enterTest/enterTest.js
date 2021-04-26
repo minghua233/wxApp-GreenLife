@@ -19,7 +19,7 @@ Page({
     this.isCorrect(this.data.choice)
     this.setData({ num: this.data.num + 1 })
     if (this.data.num > 5) {
-      wx.navigateTo({
+      wx.redirectTo({
         url: `../testResult/testResult?correct=${this.data.correctNum}`
       })
       return
@@ -31,13 +31,20 @@ Page({
       Toast.success({
         message: '答对了！',
         forbidClick: true,
-        duration: 500
+        duration: 500,
+        onClose: () => {
+          this.setData({ correctNum: this.data.correctNum + 1 })
+          return true
+        },
       })
-      this.setData({ correctNum: this.data.correctNum + 1 })
-      return true
     }
-    else Toast.fail(`答错了，正确答案是${this.data.question.explain}`)
-    return false
+    else Toast.fail({
+      message: `答错了，正确答案是${this.data.question.explain}`,
+      forbidClick: true,
+      onClose: () => {
+        return false
+      },
+    })
   },
   getQuestion() {
     wx.request({

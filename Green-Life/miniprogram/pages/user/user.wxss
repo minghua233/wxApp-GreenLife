@@ -52,7 +52,7 @@
  }
 
  .service_image{
-  z-index: 10;
+  z-index: 1;
   width: 65rpx;
   height: 65rpx;
  }

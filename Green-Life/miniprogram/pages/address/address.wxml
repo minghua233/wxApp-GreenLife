@@ -1,4 +1,5 @@
 <!-- pages/address/address.wxml -->
+<nav-bar title='{{navTitle}}' statusBarColor='#00af91' navBarColor='#00af91' titleColor='#fff'></nav-bar>
 <view class="address-wrapper">
   <block wx:if="{{userAddress.length}}">
     <van-cell-group>
@@ -6,12 +7,22 @@
     </van-cell-group>
   </block>
   <block wx:else>
-    <van-empty description="暂时没有地址哦，点下方按钮新增一个吧"></van-empty>
+    <van-empty description="暂时没有地址哦"></van-empty>
   </block>
-  <view class="address-add">
-    <van-button round color="#00af91" class="bottom-button" icon="plus" bind:click="goAdd">
-      新增地址
-    </van-button>
+  <view class="address-button">
+    <block wx:if="{{status!=='choose'}}">
+      <van-button round color="#00af91" class="bottom-button" icon="plus" bind:click="goAdd">
+        新增
+      </van-button>
+      <van-button round color="#00af91" class="bottom-button" icon="arrow-left" bind:click="goUser">
+        返回
+      </van-button>
+    </block>
+    <block wx:else>
+      <van-button round color="#00af91" class="bottom-button" icon="arrow-left" bind:click="goOrder">
+        返回订单
+      </van-button>
+    </block>
   </view>
 </view>
 <van-toast id="van-toast" />

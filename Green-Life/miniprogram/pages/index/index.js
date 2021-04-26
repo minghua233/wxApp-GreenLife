@@ -1,5 +1,6 @@
 // miniprogram/pages/index.js
-
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify'
 Page({
   /**
    * 页面的初始数据
@@ -31,10 +32,20 @@ Page({
     this.setData({ show: false })
   },
   searchRub(event) {
-    this.setData({ value: event.detail })
-    wx.navigateTo({
-      url: `../show/show?value=${this.data.value}`
-    })
+    if (event.detail == '') {
+      Notify({
+        message: '请输入垃圾名称！',
+        color: '#ffffff',
+        background: '#00af91',
+        duration: 600,
+      });
+    } else {
+      this.setData({ value: event.detail })
+      wx.navigateTo({
+        url: `../show/show?value=${this.data.value}`
+      })
+    }
+
   },
   scanPic(e) {
     wx.navigateTo({

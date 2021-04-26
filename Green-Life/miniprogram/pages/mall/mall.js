@@ -32,7 +32,7 @@ Page({
     Toast.loading({
       message: '加载商品中...',
       forbidClick: true,
-      duration: 500
+      duration: 1000
     })
     wx.cloud.callFunction({
       name: 'glGetScore',

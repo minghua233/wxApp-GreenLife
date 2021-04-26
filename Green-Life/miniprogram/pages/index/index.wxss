@@ -10,7 +10,7 @@
 }
 
 .classification_intro {
-  margin-top: 40rpx;
+  margin-top: 30rpx;
 }
 
 .classification_intro .intro_title {
@@ -26,14 +26,14 @@
 .classification_intro .intro_desc {
   margin: 0 auto;
   width: 90%;
-  margin-bottom: 40rpx;
+  margin-bottom: 20rpx;
 }
 
 .classification_photo {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20rpx;
+  /* margin-bottom: 20rpx; */
 }
 
 .classification_photo .van-button {

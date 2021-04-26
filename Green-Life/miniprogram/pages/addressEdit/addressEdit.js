@@ -1,5 +1,6 @@
 // pages/addressEdit/addressEdit.js
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
 Page({
 
   /**
@@ -12,7 +13,8 @@ Page({
     address: '',
     addressDetail: '',
     status: 'add',
-    addressId: ''
+    addressId: '',
+    navTitle:'新增地址',
   },
   addAddress() {
     Toast.loading({
@@ -34,7 +36,7 @@ Page({
         forbidClick: true,
         duration: 500,
         onClose: () => {
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../address/address'
           })
         }
@@ -62,7 +64,7 @@ Page({
         forbidClick: true,
         duration: 500,
         onClose: () => {
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../address/address'
           })
         }
@@ -70,28 +72,49 @@ Page({
     })
   },
   delAddress() {
-    Toast.loading({
-      message: '删除地址中...',
-      forbidClick: true,
-      duration: 500,
-    })
-    wx.cloud.callFunction({
-      name: 'glDelAddress',
-      data: {
-        _id: this.data.addressId,
-      }
-    }).then(res => {
-      Toast.success({
-        message: '地址删除成功',
+    Dialog.confirm({
+      title: '删除确认',
+      message: '确认删除此地址吗？',
+    }).then(() => {
+      Toast.loading({
+        message: '删除地址中...',
         forbidClick: true,
         duration: 500,
-        onClose: () => {
-          wx.navigateTo({
-            url: '../address/address'
-          })
-        }
       })
+      wx.cloud.callFunction({
+        name: 'glDelAddress',
+        data: {
+          _id: this.data.addressId,
+        }
+      }).then(res => {
+        Toast.success({
+          message: '地址删除成功',
+          forbidClick: true,
+          duration: 500,
+          onClose: () => {
+            wx.redirectTo({
+              url: '../address/address'
+            })
+          }
+        })
+      })
+    }).catch(() => {
+      console.log('用户取消删除');
     })
+  },
+  giveUP() {
+    Dialog.confirm({
+      title: '返回确认',
+      message: '确认放弃您的编辑吗？',
+    })
+      .then(() => {
+        wx.redirectTo({
+          url: '../address/address'
+        })
+      })
+      .catch(() => {
+        console.log('用户取消');
+      })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -102,7 +125,9 @@ Page({
       status: status
     })
     if (this.data.status != 'add') {
-      wx.setNavigationBarTitle({ title: '修改地址' })
+      this.setData({
+        navTitle: '修改地址'
+      })
       const addressInfo = JSON.parse(decodeURIComponent(options.addressInfo))
       this.setData({
         addressId: addressInfo._id,

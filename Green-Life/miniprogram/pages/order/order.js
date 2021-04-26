@@ -1,5 +1,6 @@
 // pages/order/order.js
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+import dayjs from 'dayjs'
 Page({
 
   /**
@@ -25,8 +26,8 @@ Page({
       // console.log(res);
       let order = res.result.data
       for (let i = 0; i < order.length; i++) {
-        order[i].addTime = order[i].addTime.slice(0, 19)
-        order[i].addTime = order[i].addTime.replace('T', ' ')
+        // dayjs格式化日期
+        order[i].addTime = dayjs(order[i].addTime).format('YYYY-MM-DD HH:mm:ss')
       }
       this.setData({
         userOrder: order

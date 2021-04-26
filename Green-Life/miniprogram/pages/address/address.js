@@ -7,18 +7,26 @@ Page({
    */
   data: {
     userAddress: [],
-    status: ''
+    status: '',
+    navTitle: '地址管理',
   },
   goAdd() {
+    let status = 'add'
     wx.navigateTo({
-      url: '../addressEdit/addressEdit'
+      url: `../addressEdit/addressEdit?status=${status}`
     })
 
+  },
+  goUser() {
+    wx.switchTab({ url: `../user/user` })
+  },
+  goOrder() {
+    wx.navigateBack()
   },
   goEdit(e) {
     let addressInfo = JSON.stringify(e.currentTarget.dataset['info'])
     // 从选择地址界面跳入
-    if(this.data.status == 'choose') {
+    if (this.data.status == 'choose') {
       wx.redirectTo({
         url: `../createOrder/createOrder?addressInfo=${encodeURIComponent(addressInfo)}`
       })
@@ -27,16 +35,20 @@ Page({
     wx.navigateTo({
       url: `../addressEdit/addressEdit?addressInfo=${encodeURIComponent(addressInfo)}&status=${status}`
     })
-
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const status = options.status
-    this.setData({
-      status: status
-    })
+    if (options.status) {
+      const status = options.status
+      this.setData({
+        status: status
+      })
+    }
+    if (this.data.status == 'choose') {
+      wx.setNavigationBarTitle({ title: '选择地址' })
+    }
     Toast.loading({
       message: '查询中...',
       forbidClick: true,
@@ -80,7 +92,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log('返回');
   },
 
   /**

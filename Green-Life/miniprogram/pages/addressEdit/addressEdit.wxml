@@ -1,3 +1,4 @@
+<nav-bar title='{{navTitle}}' statusBarColor='#00af91' navBarColor='#00af91' titleColor='#fff'></nav-bar>
 <view class="address-wrapper">
   <view class="address-text">
     <text class="title"></text>
@@ -16,11 +17,15 @@
       <van-button round bind:click="addAddress" color="#00af91">新增地址</van-button>
     </block>
     <block wx:else>
-      <van-button round bind:click="editAddress" color="#00af91">修改地址</van-button>
+      <van-button round bind:click="editAddress" color="#00af91">保存修改</van-button>
     </block>
     <block wx:if="{{status!='add'}}">
       <van-button round bind:click="delAddress" color="#e74c3c">删除地址</van-button>
     </block>
+    <block>
+      <van-button round bind:click="giveUP" color="#e74c3c">放弃修改</van-button>
+    </block>
   </view>
 </view>
 <van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
