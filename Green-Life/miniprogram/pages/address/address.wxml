@@ -14,12 +14,12 @@
       <van-button round color="#00af91" class="bottom-button" icon="plus" bind:click="goAdd">
         新增
       </van-button>
-      <van-button round color="#00af91" class="bottom-button" icon="arrow-left" bind:click="goUser">
+      <van-button round color="#95a5a6" class="bottom-button" icon="arrow-left" bind:click="goUser">
         返回
       </van-button>
     </block>
     <block wx:else>
-      <van-button round color="#00af91" class="bottom-button" icon="arrow-left" bind:click="goOrder">
+      <van-button round color="#95a5a6" class="bottom-button" icon="arrow-left" bind:click="goOrder">
         返回订单
       </van-button>
     </block>

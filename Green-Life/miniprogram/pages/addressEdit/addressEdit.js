@@ -9,67 +9,127 @@ Page({
   data: {
     recipient: '',
     phone: '',
-    phoneError: '',
-    address: '',
+    address: '江西省南昌市青山湖区',
     addressDetail: '',
     status: 'add',
     addressId: '',
-    navTitle:'新增地址',
+    navTitle: '新增地址',
+    invalidRecipient: false,
+    invalidPhone: false,
+    errorRecipient: '',
+    errorPhone: '',
+    region: ['江西省', '南昌市', '青山湖区']
+  },
+  pickRegion: function (e) {
+    let currentRegion = e.detail.value;
+    let currentAddress = currentRegion.join('')
+    console.log(currentRegion.join(''));
+    this.setData({
+      region: currentRegion,
+      address: currentAddress
+    })
+  },
+  isValidName(event) {
+    if (!event.detail) return
+    if (/^[\u4e00-\u9fa5]{2,6}$/.test(event.detail)) {
+      this.setData({
+        invalidRecipient: false,
+        errorRecipient: ''
+      })
+    } else {
+      this.setData({
+        invalidRecipient: true,
+        errorRecipient: '请输入正确的收件人姓名'
+      })
+    }
+  },
+  isValidPhone(event) {
+    if (/^1[345789]\d{9}$/.test(event.detail)) {
+      this.setData({
+        invalidPhone: false,
+        errorPhone: ''
+      })
+    } else {
+      this.setData({
+        invalidPhone: true,
+        errorPhone: '请输入正确的收件人手机号'
+      })
+    }
+  },
+  canSubmit() {
+    if (this.data.recipient === '' || this.data.invalidRecipient === true) {
+      console.log(this.data.invalidRecipient);
+      Toast.fail('您的收件人姓名填写有误');
+      return false
+    }
+    if ((this.data.phone === '' || this.data.invalidPhone === true)) {
+      Toast.fail('您的收件人手机号填写有误');
+      return false
+    }
+    if (this.data.addressDetail === '') {
+      Toast.fail('您的收件人详细地址填写有误');
+      return false
+    }
+    return true
   },
   addAddress() {
-    Toast.loading({
-      message: '保存地址中...',
-      forbidClick: true,
-      duration: 500,
-    })
-    wx.cloud.callFunction({
-      name: 'glAddAddress',
-      data: {
-        recipient: this.data.recipient,
-        phone: this.data.phone,
-        address: this.data.address,
-        addressDetail: this.data.addressDetail
-      }
-    }).then(res => {
-      Toast.success({
-        message: '地址添加成功',
+    if (this.canSubmit()) {
+      Toast.loading({
+        message: '保存地址中...',
         forbidClick: true,
         duration: 500,
-        onClose: () => {
-          wx.redirectTo({
-            url: '../address/address'
-          })
-        }
       })
-    })
+      wx.cloud.callFunction({
+        name: 'glAddAddress',
+        data: {
+          recipient: this.data.recipient,
+          phone: this.data.phone,
+          address: this.data.address,
+          addressDetail: this.data.addressDetail
+        }
+      }).then(res => {
+        Toast.success({
+          message: '地址添加成功',
+          forbidClick: true,
+          duration: 500,
+          onClose: () => {
+            wx.redirectTo({
+              url: '../address/address'
+            })
+          }
+        })
+      })
+    }
   },
   editAddress() {
-    Toast.loading({
-      message: '保存地址中...',
-      forbidClick: true,
-      duration: 500,
-    })
-    wx.cloud.callFunction({
-      name: 'glUpdateAddress',
-      data: {
-        _id: this.data.addressId,
-        recipient: this.data.recipient,
-        phone: this.data.phone,
-        address: this.data.address,
-        addressDetail: this.data.addressDetail
-      }
-    }).then(res => {
-      Toast.success({
-        message: '地址修改成功',
+    if (this.canSubmit()) {
+      Toast.loading({
+        message: '保存地址中...',
         forbidClick: true,
         duration: 500,
-        onClose: () => {
-          wx.redirectTo({
-            url: '../address/address'
-          })
-        }
       })
-    })
+      wx.cloud.callFunction({
+        name: 'glUpdateAddress',
+        data: {
+          _id: this.data.addressId,
+          recipient: this.data.recipient,
+          phone: this.data.phone,
+          address: this.data.address,
+          addressDetail: this.data.addressDetail
+        }
+      }).then(res => {
+        Toast.success({
+          message: '地址修改成功',
+          forbidClick: true,
+          duration: 500,
+          onClose: () => {
+            wx.redirectTo({
+              url: '../address/address'
+            })
+          }
+        })
+      })
+    }
   },
   delAddress() {
     Dialog.confirm({

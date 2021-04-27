@@ -35,5 +35,6 @@
     <image class="service_image" src="../../images/service.png"></image>
   </button>
 </block>
+<!-- <button bind:tap="test">test</button> -->
 <van-dialog id="van-dialog" />
 <van-toast id="van-toast" />

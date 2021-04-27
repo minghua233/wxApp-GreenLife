@@ -1,4 +1,5 @@
 // pages/test/test.js
+import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify'
 import { isLogin } from '../../utils/util'
 Page({
 
@@ -11,6 +12,14 @@ Page({
   goTest() {
     wx.navigateTo({
       url: `../enterTest/enterTest`
+    })
+  },
+  comingSoon(){
+    Notify({
+      message: '更多答题敬请期待~',
+      color: '#ffffff',
+      background: '#00af91',
+      duration: 600,
     })
   },
   /**

@@ -1,14 +1,41 @@
 /* pages/addressEdit/addressEdit.wxss */
-.address-button{
+.address-button {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-top: 200rpx;
 }
-.van-button{
+
+.van-button {
   flex: 1;
   margin: 20rpx;
   width: 400rpx;
   font-size: 30rpx;
+}
+
+.region-picker {
+  position: relative;
+  height: 60rpx;
+  top: 10rpx;
+}
+
+.address-label {
+  display: block;
+  color: #646566;
+  font-size: 28rpx;
+  left: 32rpx;
+  position: absolute;
+}
+
+.address-label::before {
+  position: absolute;
+  content: "*";
+  font-size: 14px;
+  color: #ee0a24;
+ left: -8px;
+}
+.current-address{
+  padding-left: 230rpx;
+  font-size: 28rpx;
 }

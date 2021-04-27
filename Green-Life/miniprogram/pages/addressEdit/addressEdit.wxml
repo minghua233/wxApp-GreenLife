@@ -5,11 +5,17 @@
   </view>
   <view class="address-detail">
     <van-cell-group>
-      <van-field model:value="{{ recipient }}" label="收件人:" required placeholder="请输入收件人姓名" />
-      <van-field model:value="{{ phone }}" label="手机号:" required placeholder="请输入收件人手机号" error-message="{{phoneError}}" border="{{ false }}" />
-      <van-field model:value="{{ address }}" label="收件地址:" required placeholder="请输入收件人地址，xx省xx市xx区/县" />
-      <van-field model:value="{{ addressDetail }}" label="详细地址:" required placeholder="请输入收件人详细地址" />
-      <!-- <van-switch model:checked="{{ isDefault }}" bind:change="onChange" /> -->
+      <van-field model:value="{{ recipient }}" label="收件人:" required placeholder="请输入收件人姓名" border="{{ false }}" bind:change="isValidName" focus="{{invalidRecipient}}" error="{{invalidRecipient}}" error-message="{{errorRecipient}}" />
+      <van-field model:value="{{ phone }}" label="手机号:" required placeholder="请输入收件人手机号" border="{{ false }}" bind:change="isValidPhone" focus="{{invalidPhone}}" error="{{invalidPhone}}" error-message="{{errorPhone}}" />
+      <!-- <van-field model:value="{{ address }}" label="收件地址:" required placeholder="请输入收件人地址，xx省xx市xx区/县" /> -->
+      <picker mode="region" bindchange="pickRegion" value="{{region}}">
+        <view class="region-picker">
+          <!-- <text style="color:red">*</text> -->
+          <text class="address-label">收货地址:</text>
+          <text class="current-address">{{address}}</text>
+        </view>
+      </picker>
+      <van-field model:value="{{ addressDetail }}" label="详细地址:" required placeholder="请输入收件人详细地址" border="{{ false }}" />
     </van-cell-group>
   </view>
   <view class="address-button">
@@ -23,7 +29,7 @@
       <van-button round bind:click="delAddress" color="#e74c3c">删除地址</van-button>
     </block>
     <block>
-      <van-button round bind:click="giveUP" color="#e74c3c">放弃修改</van-button>
+      <van-button round bind:click="giveUP" color="#95a5a6">放弃修改</van-button>
     </block>
   </view>
 </view>

@@ -1,5 +1,4 @@
 // miniprogram/pages/index.js
-import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify'
 Page({
   /**
@@ -38,7 +37,7 @@ Page({
         color: '#ffffff',
         background: '#00af91',
         duration: 600,
-      });
+      })
     } else {
       this.setData({ value: event.detail })
       wx.navigateTo({

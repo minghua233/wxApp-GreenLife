@@ -109,6 +109,9 @@ Page({
   aboutScore() {
     if (isLogin()) wx.navigateTo({ url: `../aboutScore/aboutScore` })
   },
+  test(){
+    wx.navigateTo({ url: `../addressEdit/addressEdit` })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -8,7 +8,12 @@ Page({
    */
   data: {
     addressInfo: {},
-    goodsInfo: {}
+    goodsInfo: {},
+    navTitle: '生成订单',
+  },
+  // 取消兑换
+  giveUp(){
+    wx.navigateBack()
   },
   // 选择地址
   chooseAddress() {
