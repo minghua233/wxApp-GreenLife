@@ -18,7 +18,7 @@ Page({
   // 选择地址
   chooseAddress() {
     const status = 'choose'
-    wx.navigateTo({
+    wx.redirectTo({
       url: `../address/address?status=${status}`
     })
   },

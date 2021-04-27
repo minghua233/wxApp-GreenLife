@@ -30,6 +30,7 @@ Page({
       wx.redirectTo({
         url: `../createOrder/createOrder?addressInfo=${encodeURIComponent(addressInfo)}`
       })
+      return
     }
     let status = 'edit'
     wx.navigateTo({

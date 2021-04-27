@@ -40,3 +40,6 @@
 .goods-content{
   margin-top: 50rpx;
 }
+.item:last-child{ 
+  margin-right: 50rpx;
+}
